@@ -24,6 +24,9 @@ const Navbar = () => {
           <button className="bg-gray-700 text-white py-1 px-4 ml-2 rounded hover:bg-gray-600 focus:outline-none">
             Search
           </button>
+          <button className="bg-red-700 text-white py-1 px-4 ml-2 rounded hover:bg-gray-600 focus:outline-none">
+            Logout
+          </button>
         </div>
       </div>
     </nav>
