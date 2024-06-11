@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
 
-const Home = () => {
+const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [remainingChars, setRemainingChars] = useState(250);
@@ -18,14 +19,20 @@ const Home = () => {
   };
 
   const handlePost = () => {
-    // Handle post creation here
-    console.log("Title:", title);
-    console.log("Description:", description);
-    // You can perform any further actions, such as sending data to a server
-    // Reset input fields after submission
-    setTitle("");
-    setDescription("");
-    setRemainingChars(250);
+    axios
+      .post("http://127.0.0.1:8000/createpost", {
+        title: title,
+        description: description,
+      })
+      .then((response) => {
+        console.log("Post created successfully:", response.data);
+        setTitle("");
+        setDescription("");
+        setRemainingChars(250);
+      })
+      .catch((error) => {
+        console.error("Error creating post:", error);
+      });
   };
 
   return (
@@ -64,4 +71,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default CreatePost;
